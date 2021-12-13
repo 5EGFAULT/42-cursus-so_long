@@ -16,8 +16,11 @@
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
   "files.associations": {
-    "libft.h": "c",
-    "get_next_line_bonus.h": "c",
-    "so_long.h": "c"
-  }
+	"libft.h": "c",
+	"get_next_line_bonus.h": "c",
+	"so_long.h": "c",
+	"mlx.h": "c",
+	"stdio.h": "c",
+	"fcntl.h": "c"
+}
 }

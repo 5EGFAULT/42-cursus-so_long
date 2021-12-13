@@ -1,20 +1,19 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [
-        ""
-      ],
-      "stopAtEntry": true,
-      "cwd": "/Users/asouinia/Desktop/42-cursus-so_long",
-      "environment": [],
-      "program": "/Users/asouinia/Desktop/42-cursus-so_long/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "externalConsole": true
-    }
+	  {
+		  "name": "(lldb) Launch",
+		  "type": "cppdbg",
+		  "request": "launch",
+		  "program": "${workspaceFolder}/so_long",
+		  "args": [
+			  "maps/map1.ber",
+		  ],
+		  "stopAtEntry": false,
+		  "cwd": "${fileDirname}",
+		  "environment": [],
+		  "externalConsole": false,
+		  "MIMode": "lldb"
+	  },
   ]
 }

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/13 04:20:41 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:28:45 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	validate_map_name(char *map_file)
 	return (0);
 }
 
-int	validate_map_border(char **map)
-{
-    return (0);
-}
+// int	validate_map_border(char **map)
+// {
+//     return (0);
+// }
 
-int	validate_map_width(char *map_file)
-{
-    return (0);
-}
+// int	validate_map_width(char *map_file)
+// {
+//     return (0);
+// }
