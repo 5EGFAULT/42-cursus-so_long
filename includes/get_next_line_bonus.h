@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:45:09 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/13 01:48:03 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/13 02:01:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
+# define BUFFER_SIZE 42
 size_t	ft_strlen_gnl(const char *s);
 char	*ft_strjoin_gnl(char *s1, char const *s2, int len);
 char	*ft_strchr_gnl(const char *s, int c);

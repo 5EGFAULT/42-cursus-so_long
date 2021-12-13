@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:44:57 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/13 01:47:37 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/13 02:02:17 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*set_rest_to_str(char **rest)
 	{
 		s = ft_strjoin_gnl(s, *rest, ft_strlen_gnl(*rest));
 		tmp = *rest;
-		if (ft_strchr(s, '\n'))
+		if (ft_strchr_gnl(s, '\n'))
 		{
 			*rest = ft_substr_gnl(*rest, BUFFER_SIZE);
 		}
