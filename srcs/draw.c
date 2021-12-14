@@ -6,13 +6,13 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 08:45:56 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 10:27:30 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	*get_img_block(void *mlx, char c)
+void	draw_img_block(t_mlx *mlx, char c, int x, int y)
 {
 	int		w;
 	int		h;
@@ -30,25 +30,22 @@ void	*get_img_block(void *mlx, char c)
 		file = COIN_BLOCK;
 	if (c == 'E')
 		file = WALL_BLOCK;
-	img = mlx_xpm_file_to_image(mlx, file, &w, &h);
-	return (img);
+	img = mlx_xpm_file_to_image(mlx->mlx, file, &w, &h);
+	w = BLOCK_SIZE * x;
+	h = BLOCK_SIZE * y;
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img, w, h);
 }
 
-void	draw_map(t_game *game, void *mlx, void	*mlx_win)
+void	draw_map(t_game *game, t_mlx *mlx)
 {
 	int	i;
 	int	j;
-	void	*img;
 
 	i = -1;
 	while (++i < game->height)
 	{
 		j = -1;
 		while (++j < game->width)
-		{
-			img = get_img_block(mlx, game->map[i][j]);
-			mlx_put_image_to_window(mlx, mlx_win, img, BLOCK_SIZE * j, BLOCK_SIZE * i);
-		}
+			draw_img_block(mlx, game->map[i][j], j, i);
 	}
 }
-
