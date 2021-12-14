@@ -6,29 +6,104 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/13 05:28:57 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 06:23:14 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// int validate_map_player(char  **map)
-// {
-//     return (0);    
-// }
+int	validate_map_player(t_game *game)
+{
+	int	n_player;
+	int	i;
+	int	j;
 
-// int validate_map_Exit(char  **map)
-// {
-//     return (0);    
-// }
+	n_player = 0;
+	i = -1;
+	while (++i < game->height)
+	{
+		j = -1;
+		while (++j < game->width)
+		{
+			if (game->map[i][j] == 'P')
+			{
+				n_player++;
+				game->p_x = i;
+				game->p_y = j;
+			}
+		}		
+	}
+	if (n_player == 1)
+		return (1);
+	else
+		return (0);
+}
 
-// int validate_map_Coins(char  **map)
-// {
-//     return (0);    
-// }
+int	validate_map_exit(t_game *game)
+{
+	int	n_exits;
+	int	i;
+	int	j;
 
-// int validate_map_Other_chars(char  **map)
-// {
-//     return (0);
-// }
+	n_exits = 0;
+	i = -1;
+	while (++i < game->height)
+	{
+		j = -1;
+		while (++j < game->width)
+		{
+			if (game->map[i][j] == 'E')
+			{
+				n_exits++;
+				game->e_x = i;
+				game->e_x = j;
+			}
+		}		
+	}
+	if (n_exits == 1)
+		return (1);
+	else
+		return (0);
+}
 
+int	validate_map_coins(t_game *game)
+{
+	int	n_coins;
+	int	i;
+	int	j;
+
+	n_coins = 0;
+	i = -1;
+	while (++i < game->height)
+	{
+		j = -1;
+		while (++j < game->width)
+		{
+			if (game->map[i][j] == 'C')
+				n_coins++;
+		}		
+	}
+	game->n_coins = n_coins;
+	if (n_coins > 0)
+		return (1);
+	else
+		return (0);
+}
+
+int	validate_map_other_chars(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < game->height)
+	{
+		j = -1;
+		while (++j < game->width)
+		{
+			if (!ft_strchr("EPC01", game->map[i][j]))
+				return (0);
+		}		
+	}
+	return (1);
+}

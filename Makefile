@@ -10,8 +10,7 @@ all: $(NAME)
 	$(CC) -Wall -Wextra -Werror -Imlx  -c $<  -o $@ 
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) -g -fsanitize=address 
-	./$(NAME) $(MAP)
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) -g -fsanitize=address 
 $(LIBFT):
 		@make -C srcs/libft
 		@make -C srcs/libft clean
@@ -22,3 +21,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@make -C srcs/libft fclean
 re: fclean all
+
+t: $(NAME)
+	./$(NAME) $(MAP)
