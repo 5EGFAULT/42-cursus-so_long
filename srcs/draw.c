@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 15:23:13 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:43:57 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 	w = BLOCK_SIZE * x;
 	h = BLOCK_SIZE * y;
 	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
+	mlx_destroy_image(game->mlx->mlx, img);
 }
 
 void	draw_map(t_game *game)
@@ -48,6 +49,7 @@ void	draw_map(t_game *game)
 	int	j;
 
 	i = -1;
+	mlx_clear_window(game->mlx->mlx, game->mlx->mlx_win);
 	while (++i < game->height)
 	{
 		j = -1;
