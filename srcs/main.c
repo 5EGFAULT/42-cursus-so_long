@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 11:07:24 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 12:12:59 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:18:34 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	mlx->mlx_win = mlx_new_window(mlx->mlx, width, height, "Shit");
 	game->mlx = mlx;
 	mlx_hook(mlx->mlx_win, 2, 1L << 0, hooks, game);
-	draw_map(game, mlx);
+	draw_map(game);
 	print_map(game);
 	(void)argc;
 	mlx_loop(mlx);

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 12:53:23 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:18:08 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define WALL_BLOCK "xpm/1.xpm"
 # define COIN_BLOCK "xpm/c.xpm"
 # define BG_BLOCK "xpm/0.xpm"
+# define EXIT_OPEN_BLOCK "xpm/e_o.xpm"
+# define EXIT_CLOSE_BLOCK "xpm/e_c.xpm"
 # define BLOCK_SIZE 50
 # define KEY_UP 13
 # define KEY_DOWN 1
@@ -64,7 +66,7 @@ t_game	*init_game(char *map_path);
 void	free_game(t_game	**game);
 void	print_map(t_game	*game);
 
-void	draw_map(t_game *game, t_mlx *mlx);
+void	draw_map(t_game *game);
 
 int		hooks(int keycode, t_game *game);
 int		movehook(t_game *game, int keycode);

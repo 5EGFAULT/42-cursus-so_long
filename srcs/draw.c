@@ -6,13 +6,13 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 10:27:30 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:23:13 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	draw_img_block(t_mlx *mlx, char c, int x, int y)
+void	draw_img_block(t_game *game, char c, int x, int y)
 {
 	int		w;
 	int		h;
@@ -29,14 +29,20 @@ void	draw_img_block(t_mlx *mlx, char c, int x, int y)
 	if (c == 'C')
 		file = COIN_BLOCK;
 	if (c == 'E')
-		file = WALL_BLOCK;
-	img = mlx_xpm_file_to_image(mlx->mlx, file, &w, &h);
+	{
+		if (game->n_coins != 0)
+			file = EXIT_CLOSE_BLOCK;
+		else
+			file = EXIT_OPEN_BLOCK;
+	}
+
+	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
 	w = BLOCK_SIZE * x;
 	h = BLOCK_SIZE * y;
-	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img, w, h);
+	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
 }
 
-void	draw_map(t_game *game, t_mlx *mlx)
+void	draw_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -46,6 +52,6 @@ void	draw_map(t_game *game, t_mlx *mlx)
 	{
 		j = -1;
 		while (++j < game->width)
-			draw_img_block(mlx, game->map[i][j], j, i);
+			draw_img_block(game, game->map[i][j], j, i);
 	}
 }

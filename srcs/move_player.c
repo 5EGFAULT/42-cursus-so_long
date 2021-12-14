@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:22:00 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 12:56:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:26:35 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	can_move(t_game *game, int direction)
 
 void	move_player(t_game *game, int direction)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -55,7 +55,17 @@ void	move_player(t_game *game, int direction)
 	game->map[game->p_y][game->p_x] = '0';
 	game->p_y += i;
 	game->p_x += j;
+	if (game->map[game->p_y][game->p_x] == 'C')
+		game->n_coins--;
+	if (game->map[game->p_y][game->p_x] == 'E')
+	{
+		if (game->n_coins == 0)
+		{
+			mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
+			exit(0);
+		}
+	}
 	game->map[game->p_y][game->p_x] = 'P';
 	print_map(game);
-	draw_map(game, game->mlx);
+	draw_map(game);
 }
