@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 06:23:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 07:46:37 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,13 @@ void	free_game(t_game	**game)
 	free((*game)->map);
 	free(*game);
 	*game = NULL;
+}
+
+void	print_map(t_game	*game)
+{
+	int	i;
+
+	i = -1;
+	while (++i < game->height)
+		printf("%s",game->map[i]);	
 }
