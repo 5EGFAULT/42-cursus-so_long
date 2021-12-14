@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 11:07:03 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 11:12:48 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	validate_map_name(char *map_file)
 {
-	int		i;
 	char	*s;
 
 	if (!map_file)

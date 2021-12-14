@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 06:23:14 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:49:05 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	validate_map_player(t_game *game)
 			if (game->map[i][j] == 'P')
 			{
 				n_player++;
-				game->p_x = i;
-				game->p_y = j;
+				game->p_x = j;
+				game->p_y = i;
 			}
 		}		
 	}
@@ -55,8 +55,8 @@ int	validate_map_exit(t_game *game)
 			if (game->map[i][j] == 'E')
 			{
 				n_exits++;
-				game->e_x = i;
 				game->e_x = j;
+				game->e_y = i;
 			}
 		}		
 	}

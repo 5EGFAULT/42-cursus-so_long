@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 11:01:53 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:53:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # define COIN_BLOCK "xpm/c.xpm"
 # define BG_BLOCK "xpm/0.xpm"
 # define BLOCK_SIZE 50
+# define KEY_UP 13
+# define KEY_DOWN 1
+# define KEY_LEFT 0
+# define KEY_RIGHT 2
+# define KEY_ESC 53
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*mlx_win;
+}t_mlx;
 
 typedef struct s_game
 {
@@ -35,12 +46,8 @@ typedef struct s_game
 	int		e_x;
 	int		e_y;
 	int		n_coins;
+	t_mlx	*mlx;
 }t_game;
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*mlx_win;
-}t_mlx;
 
 int		validate_map_width(t_game *game);
 int		validate_map_border(t_game *game);
@@ -58,5 +65,11 @@ void	free_game(t_game	**game);
 void	print_map(t_game	*game);
 
 void	draw_map(t_game *game, t_mlx *mlx);
+
+int		hooks(int keycode, t_game *game);
+int		movehook(t_game *game, int keycode);
+
+int		can_move(t_game *game, int direction);
+void	move_player(t_game *game, int direction);
 
 #endif

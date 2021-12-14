@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 11:10:08 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:44:39 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ int	init_map(char *map_path, t_game *game)
 	close(fd);
 	i = -1;
 	fd = open(map_path, O_RDONLY);
-	while (++i < height)
+	while (++i < height && game->map)
 		game->map[i] = get_next_line(fd);
 	close(fd);
 	game->height = height;
-	game->width = ft_strlen(game->map[i - 1]);
-	if (!validate_map(game))
+	if (game->map)
+		game->width = ft_strlen(game->map[i - 1]);
+	if (!game->map || !validate_map(game))
 	{
 		free_game(&game);
 		return (0);
@@ -91,4 +92,5 @@ void	print_map(t_game	*game)
 	i = -1;
 	while (++i < game->height)
 		printf("%s", game->map[i]);
+	printf("\n\n");
 }
