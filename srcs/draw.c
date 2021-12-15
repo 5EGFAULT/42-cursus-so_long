@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 15:43:57 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:07:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,10 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 		file = WALL_BLOCK;
 	if (c == 'C')
 		file = COIN_BLOCK;
-	if (c == 'E')
-	{
-		if (game->n_coins != 0)
-			file = EXIT_CLOSE_BLOCK;
-		else
-			file = EXIT_OPEN_BLOCK;
-	}
-
+	if (c == 'E' && game->n_coins != 0)
+		file = EXIT_CLOSE_BLOCK;
+	if (c == 'E' && game->n_coins == 0)
+		file = EXIT_OPEN_BLOCK;
 	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
 	w = BLOCK_SIZE * x;
 	h = BLOCK_SIZE * y;

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:22:00 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 15:46:41 by asouinia         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:08:13 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	can_move(t_game *game, int direction)
 		if (game->map[game->p_y + 1][game->p_x] == '1')
 			return (0);
 		if (game->map[game->p_y + 1][game->p_x] == 'E' && game->n_coins)
-			return (0);	}
+			return (0);
+	}
 	if (direction == KEY_LEFT)
 	{
 		if (game->map[game->p_y][game->p_x - 1] == '1')
