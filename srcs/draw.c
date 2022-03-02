@@ -12,12 +12,12 @@
 
 #include "../includes/so_long.h"
 
-void	draw_img_block(t_game *game, char c, int x, int y)
+void draw_img_block(t_game *game, char c, int x, int y)
 {
-	int		w;
-	int		h;
-	void	*img;
-	char	*file;
+	int w;
+	int h;
+	void *img;
+	char *file;
 
 	file = NULL;
 	if (c == '0')
@@ -27,7 +27,10 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 	if (c == '1')
 		file = WALL_BLOCK;
 	if (c == 'C')
-		file = COIN_BLOCK;
+	{
+		file = ft_strjoin(COIN_BLOCK, ft_itoa(game->coin_xpm_index));
+		file = ft_strjoin(file, ".xpm");
+	}
 	if (c == 'E' && game->n_coins != 0)
 		file = EXIT_CLOSE_BLOCK;
 	if (c == 'E' && game->n_coins == 0)
@@ -39,10 +42,10 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 	mlx_destroy_image(game->mlx->mlx, img);
 }
 
-void	draw_map(t_game *game)
+void draw_map(t_game *game)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = -1;
 	mlx_clear_window(game->mlx->mlx, game->mlx->mlx_win);

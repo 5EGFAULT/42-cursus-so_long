@@ -12,12 +12,52 @@
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char **argv)
+int f(t_game *game)
 {
-	t_game	*game;
-	t_mlx	*mlx;
-	int		width;
-	int		height;
+	(void)game;
+	static int frames = 0;
+	// printf(" %d", frames % 100);
+
+	if (frames % 1000 == 0)
+	{
+		// printf("%d", frames);
+		if (game->coin_xpm_index_direction)
+
+		{
+			if (game->coin_xpm_index == 6)
+			{
+				game->coin_xpm_index--;
+				game->coin_xpm_index_direction = 0;
+			}
+			else
+			{
+				game->coin_xpm_index++;
+			}
+		}
+		else
+		{
+			if (game->coin_xpm_index == 0)
+			{
+				game->coin_xpm_index++;
+				game->coin_xpm_index_direction = 1;
+			}
+			else
+			{
+				game->coin_xpm_index--;
+			}
+		}
+		draw_map(game);
+	}
+	frames++;
+	return 0;
+}
+
+int main(int argc, char **argv)
+{
+	t_game *game;
+	t_mlx *mlx;
+	int width;
+	int height;
 
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
@@ -28,13 +68,16 @@ int	main(int argc, char **argv)
 	width = game->width * BLOCK_SIZE;
 	height = game->height * BLOCK_SIZE;
 	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, width, height, "Shit");
+	mlx->mlx_win = mlx_new_window(mlx->mlx, width, height, "asouinia so_long");
 	game->mlx = mlx;
 	mlx_hook(mlx->mlx_win, 2, 1L << 0, hooks, game);
 	draw_map(game);
 	print_map(game);
 	(void)argc;
+	mlx_loop_hook(mlx->mlx, f, game);
+
 	mlx_loop(mlx);
+
 	free(mlx->mlx_win);
 	free(mlx->mlx);
 	free(mlx);
