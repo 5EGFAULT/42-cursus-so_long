@@ -18,7 +18,7 @@ int f(t_game *game)
 	static int frames = 0;
 	// printf(" %d", frames % 100);
 
-	if (frames % 1000 == 0)
+	if (frames % 500 == 0)
 	{
 		// printf("%d", frames);
 		if (game->coin_xpm_index_direction)
