@@ -12,25 +12,6 @@
 
 #include "../includes/so_long.h"
 
-int	validate_map(t_game *game)
-{
-	if (!game)
-		return (0);
-	if (!validate_map_width(game))
-		return (0);
-	if (!validate_map_border(game))
-		return (0);
-	if (!validate_map_player(game))
-		return (0);
-	if (!validate_map_exit(game))
-		return (0);
-	if (!validate_map_coins(game))
-		return (0);
-	if (!validate_map_other_chars(game))
-		return (0);
-	return (1);
-}
-
 int	init_map(char *map_path, t_game *game)
 {
 	int	height;
@@ -54,10 +35,7 @@ int	init_map(char *map_path, t_game *game)
 	if (game->map)
 		game->width = ft_strlen(game->map[i - 1]);
 	if (!game->map || !validate_map(game))
-	{
-		free_game(&game);
-		return (0);
-	}
+		return (free_game(&game));
 	return (1);
 }
 
@@ -70,8 +48,8 @@ t_game	*init_game(char *map_path)
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
-	game->coin_xpm_index = 0;
-	game->coin_xpm_index_direction = 0;
+	game->c_i = 0;
+	game->c_i_direction = 0;
 	game->death_xpm_index = 0;
 	game->death_xpm_index_direction = 0;
 	if (!init_map(map_path, game))
@@ -81,7 +59,7 @@ t_game	*init_game(char *map_path)
 	return (game);
 }
 
-void	free_game(t_game **game)
+int	free_game(t_game **game)
 {
 	int	i;
 
@@ -91,6 +69,7 @@ void	free_game(t_game **game)
 	free((*game)->map);
 	free(*game);
 	*game = NULL;
+	return (0);
 }
 
 void	print_map(t_game *game)

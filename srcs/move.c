@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int	can_move(t_game *game, int direction)
+int	can_move_old(t_game *game, int direction)
 {
 	if (direction == KEY_UP && game->map[game->p_y - 1][game->p_x] == '1')
 		return (0);
@@ -37,7 +37,7 @@ int	can_move(t_game *game, int direction)
 	return (1);
 }
 
-void	move_player(t_game *game, int direction)
+int	can_move(t_game *game, int direction)
 {
 	int	i;
 	int	j;
@@ -52,9 +52,19 @@ void	move_player(t_game *game, int direction)
 		j = -1;
 	if (direction == KEY_RIGHT)
 		j = 1;
+	if (game->map[game->p_y + i][game->p_x + j] == '1')
+		return (0);
+	if (game->map[game->p_y + i][game->p_x + j] == 'E')
+		if (game->n_coins)
+			return (0);
 	game->map[game->p_y][game->p_x] = '0';
 	game->p_y += i;
 	game->p_x += j;
+	return (1);
+}
+
+void	move_player(t_game *game)
+{
 	if (game->map[game->p_y][game->p_x] == 'C')
 		game->n_coins--;
 	if (game->map[game->p_y][game->p_x] == 'E')
@@ -99,41 +109,24 @@ void	move_death(t_game *game, int direction)
 
 int	can_move_death(t_game *game, int direction)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	if (direction == KEY_ARROW_UP)
-	{
-		if (game->map[game->d_y - 1][game->d_x] == '1')
-			return (0);
-		if (game->map[game->d_y - 1][game->d_x] == 'C')
-			return (0);
-		if (game->map[game->d_y][game->d_x + 1] == 'E')
-			return (0);
-	}
+		i = -1;
 	if (direction == KEY_ARROW_DOWN)
-	{
-		if (game->map[game->d_y + 1][game->d_x] == '1')
-			return (0);
-		if (game->map[game->d_y + 1][game->d_x] == 'C')
-			return (0);
-		if (game->map[game->d_y][game->d_x + 1] == 'E')
-			return (0);
-	}
+		i = 1;
 	if (direction == KEY_ARROW_LEFT)
-	{
-		if (game->map[game->d_y][game->d_x - 1] == '1')
-			return (0);
-		if (game->map[game->d_y][game->d_x - 1] == 'C')
-			return (0);
-		if (game->map[game->d_y][game->d_x + 1] == 'E')
-			return (0);
-	}
+		j = -1;
 	if (direction == KEY_ARROW_RIGHT)
-	{
-		if (game->map[game->d_y][game->d_x + 1] == '1')
-			return (0);
-		if (game->map[game->d_y][game->d_x + 1] == 'C')
-			return (0);
-		if (game->map[game->d_y][game->d_x + 1] == 'E')
-			return (0);
-	}
+		j = 1;
+	if (game->map[game->d_y + i][game->d_x + j] == '1')
+		return (0);
+	if (game->map[game->d_y + i][game->d_x + j] == 'C')
+		return (0);
+	if (game->map[game->d_y + i][game->d_x + j] == 'E')
+		return (0);
 	return (1);
 }

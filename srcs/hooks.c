@@ -16,7 +16,7 @@ int	movehook(t_game *game, int keycode)
 {
 	if (!can_move(game, keycode))
 		return (0);
-	move_player(game, keycode);
+	move_player(game);
 	return (1);
 }
 
@@ -35,23 +35,15 @@ int	hooks(int keycode, t_game *game)
 		mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
 		exit(0);
 	}
-	if (keycode == KEY_DOWN)
+	if (keycode == KEY_DOWN || keycode == KEY_UP)
 		movehook(game, keycode);
-	if (keycode == KEY_UP)
-		movehook(game, keycode);
-	if (keycode == KEY_LEFT)
-		movehook(game, keycode);
-	if (keycode == KEY_RIGHT)
+	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		movehook(game, keycode);
 	if (game->death_exist)
 	{
-		if (keycode == KEY_ARROW_DOWN)
+		if (keycode == KEY_ARROW_DOWN || keycode == KEY_ARROW_UP)
 			move_death_hook(game, keycode);
-		if (keycode == KEY_ARROW_UP)
-			move_death_hook(game, keycode);
-		if (keycode == KEY_ARROW_LEFT)
-			move_death_hook(game, keycode);
-		if (keycode == KEY_ARROW_RIGHT)
+		if (keycode == KEY_ARROW_LEFT || keycode == KEY_ARROW_RIGHT)
 			move_death_hook(game, keycode);
 		if (game->d_x == game->p_x && game->d_y == game->p_y)
 			exit(1);

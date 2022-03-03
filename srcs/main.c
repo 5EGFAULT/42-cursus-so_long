@@ -12,87 +12,15 @@
 
 #include "../includes/so_long.h"
 
-int f(t_game *game)
+int	main(int argc, char **argv)
 {
-	(void)game;
-	static int frames = 0;
-
-	if (frames % 500 == 0)
-	{
-		// printf("%d", frames);
-		if (game->coin_xpm_index_direction)
-		{
-			if (game->coin_xpm_index == 6)
-			{
-				game->coin_xpm_index--;
-				game->coin_xpm_index_direction = 0;
-			}
-			else
-			{
-				game->coin_xpm_index++;
-			}
-		}
-		else
-		{
-			if (game->coin_xpm_index == 0)
-			{
-				game->coin_xpm_index++;
-				game->coin_xpm_index_direction = 1;
-			}
-			else
-			{
-				game->coin_xpm_index--;
-			}
-		}
-		draw_map(game);
-		draw_death_block(game);
-	}
-	if (game->death_exist && frames % 1000 == 0)
-	{
-		if (game->death_xpm_index_direction)
-
-		{
-			if (game->death_xpm_index == 5)
-			{
-				game->death_xpm_index--;
-				game->death_xpm_index_direction = 0;
-			}
-			else
-			{
-				game->death_xpm_index++;
-			}
-		}
-		else
-		{
-			if (game->death_xpm_index == 0)
-			{
-				game->death_xpm_index++;
-				game->death_xpm_index_direction = 1;
-			}
-			else
-			{
-				game->death_xpm_index--;
-			}
-		}
-		draw_death_block(game);
-	}
-
-	frames++;
-
-	return 0;
-}
-
-int main(int argc, char **argv)
-{
-	t_game *game;
-	t_mlx *mlx;
-	int width;
-	int height;
+	t_game	*game;
+	t_mlx	*mlx;
+	int		width;
+	int		height;
 
 	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (1);
-	if (argc <= 1)
+	if (!mlx || argc <= 1)
 		return (1);
 	game = init_game(argv[1]);
 	if (!game || !game->map)
@@ -105,10 +33,8 @@ int main(int argc, char **argv)
 	mlx_hook(mlx->mlx_win, 2, 1L << 0, hooks, game);
 	draw_map(game);
 	print_map(game);
-	mlx_loop_hook(mlx->mlx, f, game);
-
+	mlx_loop_hook(mlx->mlx, loops, game);
 	mlx_loop(mlx);
-
 	free(mlx->mlx_win);
 	free(mlx->mlx);
 	free(mlx);

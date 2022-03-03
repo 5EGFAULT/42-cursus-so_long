@@ -27,10 +27,7 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 	if (c == '1')
 		file = WALL_BLOCK;
 	if (c == 'C')
-	{
-		file = ft_strjoin(COIN_BLOCK, ft_itoa(game->coin_xpm_index));
-		file = ft_strjoin(file, ".xpm");
-	}
+		file = ft_strjoin(ft_strjoin(COIN_BLOCK, ft_itoa(game->c_i)), ".xpm");
 	if (c == 'E' && game->n_coins != 0)
 		file = EXIT_CLOSE_BLOCK;
 	if (c == 'E' && game->n_coins == 0)

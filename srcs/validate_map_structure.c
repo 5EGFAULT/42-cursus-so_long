@@ -65,3 +65,22 @@ int	validate_map_width(t_game *game)
 	}
 	return (1);
 }
+
+int	validate_map(t_game *game)
+{
+	if (!game)
+		return (0);
+	if (!validate_map_width(game))
+		return (0);
+	if (!validate_map_border(game))
+		return (0);
+	if (!validate_map_player(game))
+		return (0);
+	if (!validate_map_exit(game))
+		return (0);
+	if (!validate_map_coins(game))
+		return (0);
+	if (!validate_map_other_chars(game))
+		return (0);
+	return (1);
+}
