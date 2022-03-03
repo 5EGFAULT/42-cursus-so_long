@@ -72,6 +72,9 @@ t_game *init_game(char *map_path)
 		return (NULL);
 	game->coin_xpm_index = 0;
 	game->coin_xpm_index_direction = 0;
+	game->death_xpm_index = 0;
+	game->death_xpm_index_direction = 0;
+	set_init_death(game);
 	if (!init_map(map_path, game))
 		game = NULL;
 	return (game);
@@ -97,4 +100,24 @@ void print_map(t_game *game)
 	while (++i < game->height)
 		printf("%s", game->map[i]);
 	printf("\n\n");
+}
+
+void set_init_death(t_game *game)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (++i < game->width)
+	{
+		while (++j < game->width)
+		{
+		}
+	}
+
+	game->death_exist = 0;
+
+	game->d_x = 1;
+	game->d_y = 1;
 }

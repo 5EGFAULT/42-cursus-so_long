@@ -16,7 +16,6 @@ int f(t_game *game)
 {
 	(void)game;
 	static int frames = 0;
-	// printf(" %d", frames % 100);
 
 	if (frames % 500 == 0)
 	{
@@ -48,7 +47,38 @@ int f(t_game *game)
 		}
 		draw_map(game);
 	}
+	if (frames % 1000 == 0)
+	{
+		if (game->death_xpm_index_direction)
+
+		{
+			if (game->death_xpm_index == 5)
+			{
+				game->death_xpm_index--;
+				game->death_xpm_index_direction = 0;
+			}
+			else
+			{
+				game->death_xpm_index++;
+			}
+		}
+		else
+		{
+			if (game->death_xpm_index == 0)
+			{
+				game->death_xpm_index++;
+				game->death_xpm_index_direction = 1;
+			}
+			else
+			{
+				game->death_xpm_index--;
+			}
+		}
+		draw_death_block(game);
+	}
+
 	frames++;
+
 	return 0;
 }
 

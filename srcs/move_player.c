@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int	can_move(t_game *game, int direction)
+int can_move(t_game *game, int direction)
 {
 	if (direction == KEY_UP)
 	{
@@ -45,10 +45,10 @@ int	can_move(t_game *game, int direction)
 	return (1);
 }
 
-void	move_player(t_game *game, int direction)
+void move_player(t_game *game, int direction)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -74,6 +74,62 @@ void	move_player(t_game *game, int direction)
 		}
 	}
 	game->map[game->p_y][game->p_x] = 'P';
-	print_map(game);
+	// print_map(game);
 	draw_map(game);
+}
+
+void move_death(t_game *game, int direction)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (direction == KEY_ARROW_UP)
+		i = -1;
+	if (direction == KEY_ARROW_DOWN)
+		i = 1;
+	if (direction == KEY_ARROW_LEFT)
+		j = -1;
+	if (direction == KEY_ARROW_RIGHT)
+		j = 1;
+	game->map[game->d_y][game->d_x] = '0';
+	game->d_y += i;
+	game->d_x += j;
+	if (game->map[game->d_y][game->d_x] == 'E')
+	{
+		if (game->n_coins == 0)
+		{
+			mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
+			exit(0);
+		}
+	}
+	// game->map[game->p_y][game->p_x] = 'P';
+	// print_map(game);
+	// draw_map(game);
+}
+
+int can_move_death(t_game *game, int direction)
+{
+	if (direction == KEY_ARROW_UP)
+	{
+		if (game->map[game->d_y - 1][game->d_x] == '1' || game->map[game->d_y - 1][game->d_x] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+			return (0);
+	}
+	if (direction == KEY_ARROW_DOWN)
+	{
+		if (game->map[game->d_y + 1][game->d_x] == '1' || game->map[game->d_y + 1][game->d_x] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+			return (0);
+	}
+	if (direction == KEY_ARROW_LEFT)
+	{
+		if (game->map[game->d_y][game->d_x - 1] == '1' || game->map[game->d_y][game->d_x - 1] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+			return (0);
+	}
+	if (direction == KEY_ARROW_RIGHT)
+	{
+		if (game->map[game->d_y][game->d_x + 1] == '1' || game->map[game->d_y][game->d_x + 1] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+			return (0);
+	}
+	return (1);
 }

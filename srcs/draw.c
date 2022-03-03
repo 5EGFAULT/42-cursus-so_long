@@ -20,6 +20,8 @@ void draw_img_block(t_game *game, char c, int x, int y)
 	char *file;
 
 	file = NULL;
+	// if (c == '0' && x == game->d_x && y == game->d_y)
+	// 	return;
 	if (c == '0')
 		file = BG_BLOCK;
 	if (c == 'P')
@@ -55,4 +57,19 @@ void draw_map(t_game *game)
 		while (++j < game->width)
 			draw_img_block(game, game->map[i][j], j, i);
 	}
+}
+
+void draw_death_block(t_game *game)
+{
+	int w;
+	int h;
+	void *img;
+	char *file;
+	file = ft_strjoin(DEATH_BLOCK, ft_itoa(game->death_xpm_index));
+	file = ft_strjoin(file, ".xpm");
+	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
+	w = BLOCK_SIZE * game->d_x;
+	h = BLOCK_SIZE * game->d_y;
+	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
+	mlx_destroy_image(game->mlx->mlx, img);
 }

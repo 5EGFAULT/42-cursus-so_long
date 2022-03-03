@@ -22,15 +22,22 @@
 #define WALL_BLOCK "xpm/1.xpm"
 // #define COIN_BLOCK "xpm/c-2.xpm"
 #define COIN_BLOCK "xpm/c-"
+#define DEATH_BLOCK "xpm/d-"
 #define BG_BLOCK "xpm/0.xpm"
 #define EXIT_OPEN_BLOCK "xpm/e_o.xpm"
 #define EXIT_CLOSE_BLOCK "xpm/e_c.xpm"
 #define BLOCK_SIZE 50
 #define KEY_UP 13
+
 #define KEY_DOWN 1
 #define KEY_LEFT 0
 #define KEY_RIGHT 2
 #define KEY_ESC 53
+
+#define KEY_ARROW_UP 126
+#define KEY_ARROW_DOWN 125
+#define KEY_ARROW_LEFT 123
+#define KEY_ARROW_RIGHT 124
 
 typedef struct s_mlx
 {
@@ -43,6 +50,11 @@ typedef struct s_game
 	char **map;
 	int coin_xpm_index;
 	int coin_xpm_index_direction;
+	int death_xpm_index;
+	int death_xpm_index_direction;
+	int death_exist;
+	int d_x;
+	int d_y;
 	int count_move;
 	int height;
 	int width;
@@ -70,11 +82,14 @@ void free_game(t_game **game);
 void print_map(t_game *game);
 
 void draw_map(t_game *game);
+void draw_death_block(t_game *game);
 
 int hooks(int keycode, t_game *game);
 int movehook(t_game *game, int keycode);
 
 int can_move(t_game *game, int direction);
 void move_player(t_game *game, int direction);
+void move_death(t_game *game, int direction);
+int can_move_death(t_game *game, int direction);
 
 #endif
