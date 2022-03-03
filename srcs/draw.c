@@ -12,16 +12,14 @@
 
 #include "../includes/so_long.h"
 
-void draw_img_block(t_game *game, char c, int x, int y)
+void	draw_img_block(t_game *game, char c, int x, int y)
 {
-	int w;
-	int h;
-	void *img;
-	char *file;
+	int		w;
+	int		h;
+	void	*img;
+	char	*file;
 
 	file = NULL;
-	// if (c == '0' && x == game->d_x && y == game->d_y)
-	// 	return;
 	if (c == '0')
 		file = BG_BLOCK;
 	if (c == 'P')
@@ -44,10 +42,10 @@ void draw_img_block(t_game *game, char c, int x, int y)
 	mlx_destroy_image(game->mlx->mlx, img);
 }
 
-void draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	mlx_clear_window(game->mlx->mlx, game->mlx->mlx_win);
@@ -59,12 +57,13 @@ void draw_map(t_game *game)
 	}
 }
 
-void draw_death_block(t_game *game)
+void	draw_death_block(t_game *game)
 {
-	int w;
-	int h;
-	void *img;
-	char *file;
+	int		w;
+	int		h;
+	void	*img;
+	char	*file;
+
 	file = ft_strjoin(DEATH_BLOCK, ft_itoa(game->death_xpm_index));
 	file = ft_strjoin(file, ".xpm");
 	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);

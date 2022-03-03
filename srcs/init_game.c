@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int validate_map(t_game *game)
+int	validate_map(t_game *game)
 {
 	if (!game)
 		return (0);
@@ -31,11 +31,11 @@ int validate_map(t_game *game)
 	return (1);
 }
 
-int init_map(char *map_path, t_game *game)
+int	init_map(char *map_path, t_game *game)
 {
-	int height;
-	int fd;
-	int i;
+	int	height;
+	int	fd;
+	int	i;
 
 	height = 0;
 	fd = open(map_path, O_RDONLY);
@@ -61,9 +61,9 @@ int init_map(char *map_path, t_game *game)
 	return (1);
 }
 
-t_game *init_game(char *map_path)
+t_game	*init_game(char *map_path)
 {
-	t_game *game;
+	t_game	*game;
 
 	if (!validate_map_name(map_path))
 		return (0);
@@ -74,15 +74,16 @@ t_game *init_game(char *map_path)
 	game->coin_xpm_index_direction = 0;
 	game->death_xpm_index = 0;
 	game->death_xpm_index_direction = 0;
-	set_init_death(game);
 	if (!init_map(map_path, game))
 		game = NULL;
+	else
+		set_init_death(game);
 	return (game);
 }
 
-void free_game(t_game **game)
+void	free_game(t_game **game)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < (*game)->height)
@@ -92,9 +93,9 @@ void free_game(t_game **game)
 	*game = NULL;
 }
 
-void print_map(t_game *game)
+void	print_map(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < game->height)
@@ -102,22 +103,27 @@ void print_map(t_game *game)
 	printf("\n\n");
 }
 
-void set_init_death(t_game *game)
+void	set_init_death(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	i = -1;
+	i = 0;
 	j = -1;
-	while (++i < game->width)
+	game->death_exist = 0;
+	while (++i < game->height - 1)
 	{
-		while (++j < game->width)
+		if (game->death_exist)
+			break ;
+		while (++j < game->width - 1)
 		{
+			if (game->map[i][j] == '0')
+			{
+				game->death_exist = 1;
+				game->d_x = i;
+				game->d_y = j;
+				break ;
+			}
 		}
 	}
-
-	game->death_exist = 0;
-
-	game->d_x = 1;
-	game->d_y = 1;
 }

@@ -18,17 +18,22 @@
 #include <fcntl.h>
 #include "../srcs/libft/libft.h"
 #include "../srcs/Get_next_line/get_next_line_bonus.h"
+
+#define BLOCK_SIZE 50
+
+//? XPM PATHS
+
 #define PLAYER_BLOCK "xpm/p.xpm"
 #define WALL_BLOCK "xpm/1.xpm"
-// #define COIN_BLOCK "xpm/c-2.xpm"
 #define COIN_BLOCK "xpm/c-"
 #define DEATH_BLOCK "xpm/d-"
 #define BG_BLOCK "xpm/0.xpm"
 #define EXIT_OPEN_BLOCK "xpm/e_o.xpm"
 #define EXIT_CLOSE_BLOCK "xpm/e_c.xpm"
-#define BLOCK_SIZE 50
-#define KEY_UP 13
 
+//? EVENT KEYS CODES
+
+#define KEY_UP 13
 #define KEY_DOWN 1
 #define KEY_LEFT 0
 #define KEY_RIGHT 2
@@ -38,6 +43,8 @@
 #define KEY_ARROW_DOWN 125
 #define KEY_ARROW_LEFT 123
 #define KEY_ARROW_RIGHT 124
+
+//? ERRORS
 
 typedef struct s_mlx
 {
@@ -80,6 +87,7 @@ int init_map(char *map_path, t_game *game);
 t_game *init_game(char *map_path);
 void free_game(t_game **game);
 void print_map(t_game *game);
+void set_init_death(t_game *game);
 
 void draw_map(t_game *game);
 void draw_death_block(t_game *game);

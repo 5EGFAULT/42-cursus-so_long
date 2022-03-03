@@ -12,43 +12,35 @@
 
 #include "../includes/so_long.h"
 
-int can_move(t_game *game, int direction)
+int	can_move(t_game *game, int direction)
 {
-	if (direction == KEY_UP)
-	{
-		if (game->map[game->p_y - 1][game->p_x] == '1')
+	if (direction == KEY_UP && game->map[game->p_y - 1][game->p_x] == '1')
+		return (0);
+	if (direction == KEY_UP && game->map[game->p_y - 1][game->p_x] == 'E')
+		if (game->n_coins)
 			return (0);
-		if (game->map[game->p_y - 1][game->p_x] == 'E' && game->n_coins)
+	if (direction == KEY_DOWN && game->map[game->p_y + 1][game->p_x] == '1')
+		return (0);
+	if (direction == KEY_DOWN && game->map[game->p_y + 1][game->p_x] == 'E')
+		if (game->n_coins)
 			return (0);
-	}
-	if (direction == KEY_DOWN)
-	{
-		if (game->map[game->p_y + 1][game->p_x] == '1')
+	if (direction == KEY_LEFT && game->map[game->p_y][game->p_x - 1] == '1')
+		return (0);
+	if (direction == KEY_LEFT && game->map[game->p_y][game->p_x - 1] == 'E')
+		if (game->n_coins)
 			return (0);
-		if (game->map[game->p_y + 1][game->p_x] == 'E' && game->n_coins)
+	if (direction == KEY_RIGHT && game->map[game->p_y][game->p_x + 1] == '1')
+		return (0);
+	if (direction == KEY_RIGHT && game->map[game->p_y][game->p_x + 1] == 'E')
+		if (game->n_coins)
 			return (0);
-	}
-	if (direction == KEY_LEFT)
-	{
-		if (game->map[game->p_y][game->p_x - 1] == '1')
-			return (0);
-		if (game->map[game->p_y][game->p_x - 1] == 'E' && game->n_coins)
-			return (0);
-	}
-	if (direction == KEY_RIGHT)
-	{
-		if (game->map[game->p_y][game->p_x + 1] == '1')
-			return (0);
-		if (game->map[game->p_y][game->p_x + 1] == 'E' && game->n_coins)
-			return (0);
-	}
 	return (1);
 }
 
-void move_player(t_game *game, int direction)
+void	move_player(t_game *game, int direction)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -74,14 +66,13 @@ void move_player(t_game *game, int direction)
 		}
 	}
 	game->map[game->p_y][game->p_x] = 'P';
-	// print_map(game);
 	draw_map(game);
 }
 
-void move_death(t_game *game, int direction)
+void	move_death(t_game *game, int direction)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -104,31 +95,44 @@ void move_death(t_game *game, int direction)
 			exit(0);
 		}
 	}
-	// game->map[game->p_y][game->p_x] = 'P';
-	// print_map(game);
-	// draw_map(game);
 }
 
-int can_move_death(t_game *game, int direction)
+int	can_move_death(t_game *game, int direction)
 {
 	if (direction == KEY_ARROW_UP)
 	{
-		if (game->map[game->d_y - 1][game->d_x] == '1' || game->map[game->d_y - 1][game->d_x] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+		if (game->map[game->d_y - 1][game->d_x] == '1')
+			return (0);
+		if (game->map[game->d_y - 1][game->d_x] == 'C')
+			return (0);
+		if (game->map[game->d_y][game->d_x + 1] == 'E')
 			return (0);
 	}
 	if (direction == KEY_ARROW_DOWN)
 	{
-		if (game->map[game->d_y + 1][game->d_x] == '1' || game->map[game->d_y + 1][game->d_x] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+		if (game->map[game->d_y + 1][game->d_x] == '1')
+			return (0);
+		if (game->map[game->d_y + 1][game->d_x] == 'C')
+			return (0);
+		if (game->map[game->d_y][game->d_x + 1] == 'E')
 			return (0);
 	}
 	if (direction == KEY_ARROW_LEFT)
 	{
-		if (game->map[game->d_y][game->d_x - 1] == '1' || game->map[game->d_y][game->d_x - 1] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+		if (game->map[game->d_y][game->d_x - 1] == '1')
+			return (0);
+		if (game->map[game->d_y][game->d_x - 1] == 'C')
+			return (0);
+		if (game->map[game->d_y][game->d_x + 1] == 'E')
 			return (0);
 	}
 	if (direction == KEY_ARROW_RIGHT)
 	{
-		if (game->map[game->d_y][game->d_x + 1] == '1' || game->map[game->d_y][game->d_x + 1] == 'C' || game->map[game->d_y][game->d_x + 1] == 'E')
+		if (game->map[game->d_y][game->d_x + 1] == '1')
+			return (0);
+		if (game->map[game->d_y][game->d_x + 1] == 'C')
+			return (0);
+		if (game->map[game->d_y][game->d_x + 1] == 'E')
 			return (0);
 	}
 	return (1);

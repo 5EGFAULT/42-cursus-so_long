@@ -21,7 +21,6 @@ int f(t_game *game)
 	{
 		// printf("%d", frames);
 		if (game->coin_xpm_index_direction)
-
 		{
 			if (game->coin_xpm_index == 6)
 			{
@@ -46,8 +45,9 @@ int f(t_game *game)
 			}
 		}
 		draw_map(game);
+		draw_death_block(game);
 	}
-	if (frames % 1000 == 0)
+	if (game->death_exist && frames % 1000 == 0)
 	{
 		if (game->death_xpm_index_direction)
 
@@ -92,6 +92,8 @@ int main(int argc, char **argv)
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
 		return (1);
+	if (argc <= 1)
+		return (1);
 	game = init_game(argv[1]);
 	if (!game || !game->map)
 		return (1);
@@ -103,7 +105,6 @@ int main(int argc, char **argv)
 	mlx_hook(mlx->mlx_win, 2, 1L << 0, hooks, game);
 	draw_map(game);
 	print_map(game);
-	(void)argc;
 	mlx_loop_hook(mlx->mlx, f, game);
 
 	mlx_loop(mlx);
