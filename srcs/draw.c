@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/15 10:07:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:46:32 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 
 void	draw_map(t_game *game)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*str;
+	int		c;
 
 	i = -1;
 	mlx_clear_window(game->mlx->mlx, game->mlx->mlx_win);
@@ -52,6 +54,10 @@ void	draw_map(t_game *game)
 		while (++j < game->width)
 			draw_img_block(game, game->map[i][j], j, i);
 	}
+	str = ft_itoa(game->count_move);
+	c = create_trgb(1, 0, 255, 0);
+	mlx_string_put(game->mlx->mlx, game->mlx->mlx_win, 0, 0, c, "moves : ");
+	mlx_string_put(game->mlx->mlx, game->mlx->mlx_win, 100, 0, c, str);
 }
 
 void	draw_death_block(t_game *game)
@@ -68,4 +74,9 @@ void	draw_death_block(t_game *game)
 	h = BLOCK_SIZE * game->d_y;
 	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
 	mlx_destroy_image(game->mlx->mlx, img);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
