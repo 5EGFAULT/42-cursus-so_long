@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 11:12:48 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:30:48 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	validate_map_width(t_game *game)
 int	validate_map(t_game *game)
 {
 	if (!game)
-		return (0);
+		catch_error_game_is_null(0);
 	if (!validate_map_width(game))
 		return (0);
 	if (!validate_map_border(game))
