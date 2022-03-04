@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 13:28:12 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:45:53 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@
 #define ERROR_MAP_NOT_BER_EXTENTION 9
 #define ERROR_GAME_IS_NULL 100
 
-
-
 typedef struct s_mlx
 {
 	void *mlx;
 	void *mlx_win;
 } t_mlx;
+
 typedef struct s_game
 {
 	char **map;
@@ -77,6 +76,7 @@ typedef struct s_game
 	int n_coins;
 	t_mlx *mlx;
 } t_game;
+
 //? validate_map_structure.c
 int		validate_map(t_game *game);
 int		validate_map_width(t_game *game);
@@ -108,15 +108,12 @@ int		loops(t_game *game);
 void win_game(t_game *game);
 void lost_game(t_game *game);
 void close_game(t_game *game);
-//? errors.c
-void 	hundle_error(t_game *game, int error);
-void 	hundle_error_1(int error);
 //? errors2.c
 void	catch_error_map_border(void);
 void	catch_error_map_player(void);
 void	catch_error_map_exit(void);
 void	catch_error_map_found_forbidden_object(void);
-//? errors3.c
+//? errors1.c
 void	catch_error_map_not_found(void);
 void	catch_error_map_not_valid(void);
 void	catch_error_map_not_ber_extention(void);

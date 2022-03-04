@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:39:13 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:16:27 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:46:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	win_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
 	free_game(&game);
 	exit(0);
 }
