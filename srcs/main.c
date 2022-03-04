@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 11:07:24 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:53:25 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:21:33 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	mlx->mlx_win = mlx_new_window(mlx->mlx, width, height, "asouinia so_long");
 	game->mlx = mlx;
 	mlx_hook(mlx->mlx_win, 2, 1L << 0, hooks, game);
+	mlx_hook(mlx->mlx_win, 17, 1L << 0, destroy_hook, game);
 	mlx_loop_hook(mlx->mlx, loops, game);
 	mlx_loop(mlx);
 	free(mlx->mlx_win);

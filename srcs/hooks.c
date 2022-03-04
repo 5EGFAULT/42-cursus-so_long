@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:12:45 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:54:44 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:20:38 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,12 @@ int	hooks(int keycode, t_game *game)
 		if (game->d_x == game->p_x && game->d_y == game->p_y)
 			lost_game(game);
 	}
+	return (0);
+}
+
+int	destroy_hook(t_game *game)
+{
+	(void)game;
+	close_game();
 	return (0);
 }

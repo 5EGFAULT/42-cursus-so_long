@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 15:39:24 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:21:10 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	draw_death_block(t_game *game);
 //? hooks.c
 int		hooks(int keycode, t_game *game);
 int		movehook(t_game *game, int keycode);
+int		destroy_hook(t_game *game);
 //? move.c
 int		can_move(t_game *game, int direction);
 void	move_player(t_game *game);
@@ -110,7 +111,7 @@ int		loops(t_game *game);
 //? endgame.c
 void	win_game(t_game *game);
 void	lost_game(t_game *game);
-void	close_game(t_game *game);
+void	close_game(void);
 //? errors2.c
 void	catch_error_map_border(void);
 void	catch_error_map_player(void);

@@ -9,7 +9,7 @@ all: $(NAME)
 
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) 
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) -g -fsanitize=address
 $(LIBFT):
 	@make -C srcs/libft
 %.o: %.c
