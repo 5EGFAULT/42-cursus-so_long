@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 11:07:24 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 11:44:11 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:19:06 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		return (1);
 	game = init_game(argv[1]);
 	if (!game || !game->map)
-		return (1);
+		catch_error_game_is_null();
 	width = game->width * BLOCK_SIZE;
 	height = game->height * BLOCK_SIZE;
 	mlx->mlx = mlx_init();

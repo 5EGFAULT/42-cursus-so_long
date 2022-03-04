@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:39:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 13:28:17 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:23:43 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	hundle_error(t_game *game, int error)
 {
-	ft_putstr_fd("Error :\n", 1);
 	free_game(&game);
 	if (error == ERROR_MAP_NOT_FOUND)
 		catch_error_map_not_found();

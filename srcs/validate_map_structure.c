@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 13:30:48 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:29:36 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,18 @@ int	validate_map_width(t_game *game)
 int	validate_map(t_game *game)
 {
 	if (!game)
-		catch_error_game_is_null(0);
+		catch_error_game_is_null();
 	if (!validate_map_width(game))
-		return (0);
+		catch_error_map_width();
 	if (!validate_map_border(game))
-		return (0);
+		catch_error_map_border();
 	if (!validate_map_player(game))
-		return (0);
+		catch_error_map_player();
 	if (!validate_map_exit(game))
-		return (0);
+		catch_error_map_exit();
 	if (!validate_map_coins(game))
 		return (0);
 	if (!validate_map_other_chars(game))
-		return (0);
+		catch_error_map_found_forbidden_object();
 	return (1);
 }

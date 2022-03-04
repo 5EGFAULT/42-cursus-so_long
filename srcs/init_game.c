@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 13:29:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:35:54 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	init_map(char *map_path, t_game *game)
 	height = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		catch_error_map_not_found();
 	while (get_next_line(fd))
 		height++;
+	if (height == 0)
+		catch_error_map_not_valid();
 	game->map = malloc(sizeof(char *) * (height));
 	close(fd);
 	i = -1;
@@ -44,10 +46,10 @@ t_game	*init_game(char *map_path)
 	t_game	*game;
 
 	if (!validate_map_name(map_path))
-		hundle_error(NULL, ERROR_MAP_NOT_BER_EXTENTION);
+		catch_error_map_not_ber_extention();
 	game = malloc(sizeof(t_game));
 	if (!game)
-		return (NULL);
+		catch_error_game_is_null();
 	game->count_move = 0;
 	game->c_i = 0;
 	game->c_i_direction = 0;
@@ -57,6 +59,9 @@ t_game	*init_game(char *map_path)
 		game = NULL;
 	else
 		set_init_death(game);
+	ft_putstr_fd("moves : ", 1);
+	ft_putnbr_fd(game->count_move, 1);
+	ft_putchar_fd('\n', 1);
 	return (game);
 }
 
