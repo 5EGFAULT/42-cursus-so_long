@@ -6,11 +6,25 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 07:48:49 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 15:46:32 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 19:53:50 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static char	*get_file(char *start, int idx)
+{
+	char	*file;
+	char	*tmp1;
+	char	*tmp2;
+
+	tmp1 = ft_itoa(idx);
+	tmp2 = ft_strjoin(start, tmp1);
+	file = ft_strjoin(tmp2, ".xpm");
+	free(tmp1);
+	free(tmp2);
+	return (file);
+}
 
 void	draw_img_block(t_game *game, char c, int x, int y)
 {
@@ -19,24 +33,26 @@ void	draw_img_block(t_game *game, char c, int x, int y)
 	void	*img;
 	char	*file;
 
-	file = NULL;
 	if (c == '0')
-		file = BG_BLOCK;
+		file = ft_strdup(BG_BLOCK);
 	if (c == 'P')
-		file = PLAYER_BLOCK;
+		file = ft_strdup(PLAYER_BLOCK);
 	if (c == '1')
-		file = WALL_BLOCK;
+		file = ft_strdup(WALL_BLOCK);
 	if (c == 'C')
-		file = ft_strjoin(ft_strjoin(COIN_BLOCK, ft_itoa(game->c_i)), ".xpm");
+		file = get_file(COIN_BLOCK, game->c_i);
 	if (c == 'E' && game->n_coins != 0)
-		file = EXIT_CLOSE_BLOCK;
+		file = ft_strdup(EXIT_CLOSE_BLOCK);
 	if (c == 'E' && game->n_coins == 0)
-		file = EXIT_OPEN_BLOCK;
+		file = ft_strdup(EXIT_OPEN_BLOCK);
 	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
 	w = BLOCK_SIZE * x;
 	h = BLOCK_SIZE * y;
+	if (!img)
+		catch_error_map_not_found();
 	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
 	mlx_destroy_image(game->mlx->mlx, img);
+	free(file);
 }
 
 void	draw_map(t_game *game)
@@ -58,6 +74,7 @@ void	draw_map(t_game *game)
 	c = create_trgb(1, 0, 255, 0);
 	mlx_string_put(game->mlx->mlx, game->mlx->mlx_win, 0, 0, c, "moves : ");
 	mlx_string_put(game->mlx->mlx, game->mlx->mlx_win, 100, 0, c, str);
+	free(str);
 }
 
 void	draw_death_block(t_game *game)
@@ -67,13 +84,18 @@ void	draw_death_block(t_game *game)
 	void	*img;
 	char	*file;
 
-	file = ft_strjoin(DEATH_BLOCK, ft_itoa(game->death_xpm_index));
-	file = ft_strjoin(file, ".xpm");
-	img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
-	w = BLOCK_SIZE * game->d_x;
-	h = BLOCK_SIZE * game->d_y;
-	mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
-	mlx_destroy_image(game->mlx->mlx, img);
+	if (game->death_exist)
+	{
+		file = get_file(DEATH_BLOCK, game->death_xpm_index);
+		img = mlx_xpm_file_to_image(game->mlx->mlx, file, &w, &h);
+		if (!img)
+			catch_error_map_not_found();
+		w = BLOCK_SIZE * game->d_x;
+		h = BLOCK_SIZE * game->d_y;
+		mlx_put_image_to_window(game->mlx->mlx, game->mlx->mlx_win, img, w, h);
+		mlx_destroy_image(game->mlx->mlx, img);
+		free(file);
+	}
 }
 
 int	create_trgb(int t, int r, int g, int b)

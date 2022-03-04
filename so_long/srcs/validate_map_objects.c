@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 03:37:35 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:28:18 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:26:51 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	validate_map_exit(t_game *game)
 			}
 		}		
 	}
-	if (n_exits == 1)
+	if (n_exits >= 1)
 		return (1);
 	else
 		return (0);

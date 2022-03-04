@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 16:21:10 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:08:05 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		validate_map_other_chars(t_game *game);
 //? init_game.c
 t_game	*init_game(char *map_path);
 int		free_game(t_game **game);
-void	print_map(t_game *game);
+int		count_height(int fd);
 void	set_init_death(t_game *game);
 //? draw.c
 int		create_trgb(int t, int r, int g, int b);

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 15:52:03 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 15:28:34 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 19:51:56 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	loops(t_game *game)
 {
 	static int	frames = 0;
 
+	animate_coin(frames, game);
 	if (game->game)
 	{
-		animate_coin(frames, game);
 		animate_death(frames, game);
 		frames++;
 	}

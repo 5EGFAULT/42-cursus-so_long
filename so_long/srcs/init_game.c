@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:53:15 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:16:57 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	init_map(char *map_path, t_game *game)
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		catch_error_map_not_found();
-	while (get_next_line(fd))
-		height++;
+	height = count_height(fd);
 	if (height == 0)
 		catch_error_map_not_valid();
 	game->map = malloc(sizeof(char *) * (height));
@@ -60,9 +59,6 @@ t_game	*init_game(char *map_path)
 		game = NULL;
 	else
 		set_init_death(game);
-	ft_putstr_fd("moves : ", 1);
-	ft_putnbr_fd(game->count_move, 1);
-	ft_putchar_fd('\n', 1);
 	return (game);
 }
 
@@ -81,14 +77,20 @@ int	free_game(t_game **game)
 	return (0);
 }
 
-void	print_map(t_game *game)
+int	count_height(int fd)
 {
-	int	i;
+	int		i;
+	char	*str;
 
-	i = -1;
-	while (++i < game->height)
-		ft_putstr_fd(game->map[i], 1);
-	ft_putstr_fd("\n\n", 1);
+	i = 0;
+	str = get_next_line(fd);
+	while (str)
+	{
+		free(str);
+		str = get_next_line(fd);
+		i++;
+	}
+	return (i);
 }
 
 void	set_init_death(t_game *game)
