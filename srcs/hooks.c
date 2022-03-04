@@ -31,10 +31,7 @@ int	move_death_hook(t_game *game, int keycode)
 int	hooks(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
-		exit(0);
-	}
+		close_game(game);
 	if (keycode == KEY_DOWN || keycode == KEY_UP)
 		movehook(game, keycode);
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)

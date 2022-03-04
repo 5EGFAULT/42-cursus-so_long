@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 15:18:08 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:45:15 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 #define KEY_ARROW_LEFT 123
 #define KEY_ARROW_RIGHT 124
 //? ERRORS
+#define ERROR_MAP_PATH 0 
+#define ERROR_MAP_NOT_FOUND 0 
+
+
+
 typedef struct s_mlx
 {
 	void *mlx;
@@ -64,21 +69,24 @@ typedef struct s_game
 	int n_coins;
 	t_mlx *mlx;
 } t_game;
+//? validate_map_structure.c
+int		validate_map(t_game *game);
 int		validate_map_width(t_game *game);
 int		validate_map_border(t_game *game);
 int		validate_map_name(char *map_file);
+//? validate_map_objects.c
 int		validate_map_player(t_game *game);
 int		validate_map_exit(t_game *game);
 int		validate_map_coins(t_game *game);
 int		validate_map_other_chars(t_game *game);
-int		validate_map(t_game *game);
-int 	nit_map(char *map_path, t_game *game);
+//? init_game.c
 t_game *init_game(char *map_path);
 int		free_game(t_game **game);
 void	print_map(t_game *game);
 void	set_init_death(t_game *game);
 void	draw_map(t_game *game);
 void	draw_death_block(t_game *game);
+//? hooks.c
 int		hooks(int keycode, t_game *game);
 int		movehook(t_game *game, int keycode);
 //? move.c
@@ -88,5 +96,12 @@ void	move_death(t_game *game, int direction);
 int		can_move_death(t_game *game, int direction);
 //? loops.c
 int		loops(t_game *game);
+//? endgame.c
+void win_game(t_game *game);
+void lost_game(t_game *game);
+void close_game(t_game *game);
+//? errors.c
+void hundle_error(t_game *game, int error);
+
 
 #endif

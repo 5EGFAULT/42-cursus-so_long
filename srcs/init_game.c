@@ -48,6 +48,7 @@ t_game	*init_game(char *map_path)
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
+	game->count_move = 0;
 	game->c_i = 0;
 	game->c_i_direction = 0;
 	game->death_xpm_index = 0;

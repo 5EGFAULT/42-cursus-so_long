@@ -70,12 +70,13 @@ void	move_player(t_game *game)
 	if (game->map[game->p_y][game->p_x] == 'E')
 	{
 		if (game->n_coins == 0)
-		{
-			mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
-			exit(0);
-		}
+			win_game(game);
 	}
 	game->map[game->p_y][game->p_x] = 'P';
+	game->count_move++;
+	ft_putstr_fd("moves : ", 1);
+	ft_putnbr_fd(game->count_move, 1);
+	ft_putchar_fd('\n', 1);
 	draw_map(game);
 }
 
@@ -97,14 +98,6 @@ void	move_death(t_game *game, int direction)
 	game->map[game->d_y][game->d_x] = '0';
 	game->d_y += i;
 	game->d_x += j;
-	if (game->map[game->d_y][game->d_x] == 'E')
-	{
-		if (game->n_coins == 0)
-		{
-			mlx_destroy_window(game->mlx->mlx, game->mlx->mlx_win);
-			exit(0);
-		}
-	}
 }
 
 int	can_move_death(t_game *game, int direction)
