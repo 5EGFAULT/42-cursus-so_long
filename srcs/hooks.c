@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:12:45 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 11:56:52 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:28:44 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	hooks(int keycode, t_game *game)
 			move_death_hook(game, keycode);
 		if (game->d_x == game->p_x && game->d_y == game->p_y)
 			lost_game(game);
- 
 	}
 	return (0);
 }

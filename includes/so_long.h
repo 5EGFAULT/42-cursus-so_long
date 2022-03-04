@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 12:23:57 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:28:12 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 #define ERROR_MAP_EXIT 6
 #define ERROR_MAP_COINS 7
 #define ERROR_MAP_FOUND_FORBIDDEN_OBJECT 8
+#define ERROR_MAP_NOT_BER_EXTENTION 9
 #define ERROR_GAME_IS_NULL 100
 
 
@@ -109,16 +110,17 @@ void lost_game(t_game *game);
 void close_game(t_game *game);
 //? errors.c
 void 	hundle_error(t_game *game, int error);
-void 	hundle_error_1(t_game *game, int error);
+void 	hundle_error_1(int error);
 //? errors2.c
-void	ERROR_MAP_NOT_FOUND();
-void	ERROR_MAP_NOT_VALID();
-void	ERROR_MAP_NOT_BER_EXTENTION();
-void	ERROR_GAME_IS_NULL();
-void	ERROR_MAP_WIDTH();
-void	ERROR_MAP_BORDER();
-void	ERROR_MAP_PLAYER();
-void	ERROR_MAP_EXIT();
-void	ERROR_MAP_FOUND_FORBIDDEN_OBJECT();
+void	catch_error_map_border(void);
+void	catch_error_map_player(void);
+void	catch_error_map_exit(void);
+void	catch_error_map_found_forbidden_object(void);
+//? errors3.c
+void	catch_error_map_not_found(void);
+void	catch_error_map_not_valid(void);
+void	catch_error_map_not_ber_extention(void);
+void	catch_error_game_is_null(void);
+void	catch_error_map_width(void);
 
 #endif

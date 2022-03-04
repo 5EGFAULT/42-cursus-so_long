@@ -12,31 +12,31 @@
 
 #include "../includes/so_long.h"
 
-void	ERROR_MAP_NOT_FOUND()
+void	catch_error_map_not_found(void)
 {
 	ft_putstr_fd("ERROR_MAP_NOT_FOUND", 1);
 	exit(ERROR_MAP_NOT_FOUND);
 }
 
-void	ERROR_MAP_NOT_VALID()
+void	catch_error_map_not_valid(void)
 {
 	ft_putstr_fd("ERROR_MAP_NOT_VALID", 1);
 	exit(ERROR_MAP_NOT_VALID);
 }
 
-void	ERROR_MAP_NOT_BER_EXTENTION()
+void	catch_error_map_not_ber_extention(void)
 {
 	ft_putstr_fd("ERROR_MAP_NOT_BER_EXTENTION", 1);
 	exit(ERROR_MAP_NOT_BER_EXTENTION);
 }
 
-void	ERROR_GAME_IS_NULL()
+void	catch_error_game_is_null(void)
 {
 	ft_putstr_fd("ERROR_GAME_IS_NULL", 1);
 	exit(ERROR_GAME_IS_NULL);
 }
 
-void	ERROR_MAP_WIDTH()
+void	catch_error_map_width(void)
 {
 	ft_putstr_fd("ERROR_MAP_WIDTH", 1);
 	exit(ERROR_MAP_WIDTH);

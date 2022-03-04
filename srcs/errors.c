@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:39:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 12:28:24 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:28:17 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,30 @@
 void	hundle_error(t_game *game, int error)
 {
 	ft_putstr_fd("Error :\n", 1);
+	free_game(&game);
 	if (error == ERROR_MAP_NOT_FOUND)
-		ERROR_MAP_NOT_FOUND();
+		catch_error_map_not_found();
 	if (error == ERROR_MAP_NOT_VALID)
-		ERROR_MAP_NOT_VALID();
+		catch_error_map_not_valid();
 	if (error == ERROR_MAP_NOT_BER_EXTENTION)
-		ERROR_MAP_NOT_BER_EXTENTION();
+		catch_error_map_not_ber_extention();
 	if (error == ERROR_GAME_IS_NULL)
-		ERROR_GAME_IS_NULL();
+		catch_error_game_is_null();
 	if (error == ERROR_MAP_WIDTH)
-		ERROR_MAP_WIDTH();
+		catch_error_map_width();
 	if (error == ERROR_MAP_BORDER)
-		ERROR_MAP_BORDER();
+		catch_error_map_border();
 	if (error == ERROR_MAP_PLAYER)
-		ERROR_MAP_PLAYER();
+		catch_error_map_player();
 	if (error == ERROR_MAP_EXIT)
-		ERROR_MAP_EXIT();
+		catch_error_map_exit();
 	if (error == ERROR_MAP_FOUND_FORBIDDEN_OBJECT)
-		ERROR_MAP_FOUND_FORBIDDEN_OBJECT();
-	hundle_error_1(game, error);
+		catch_error_map_found_forbidden_object();
+	hundle_error_1(error);
 }
 
-void	hundle_error_1(t_game *game, int error)
+void	hundle_error_1(int error)
 {
 	if (error == ERROR_MAP_WIDTH)
-		ERROR_MAP_NOT_FOUND();
+		catch_error_map_not_found();
 }

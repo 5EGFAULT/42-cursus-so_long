@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 12:15:22 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:29:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_game	*init_game(char *map_path)
 	t_game	*game;
 
 	if (!validate_map_name(map_path))
-		hundle_error(NULL,ERROR_MAP_NOT_BER_EXTENTION);
+		hundle_error(NULL, ERROR_MAP_NOT_BER_EXTENTION);
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
@@ -65,6 +65,8 @@ int	free_game(t_game **game)
 	int	i;
 
 	i = -1;
+	if (!game || !(*game))
+		return (0);
 	while (++i < (*game)->height)
 		free((*game)->map[i]);
 	free((*game)->map);
