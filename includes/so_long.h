@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:45:53 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:52:41 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_mlx
 typedef struct s_game
 {
 	char **map;
+	int	game;
 	int c_i;
 	int c_i_direction;
 	int death_xpm_index;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:22:00 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/15 10:08:13 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:59:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ void	move_player(t_game *game)
 			win_game(game);
 	}
 	game->map[game->p_y][game->p_x] = 'P';
-	game->count_move++;
-	ft_putstr_fd("moves : ", 1);
-	ft_putnbr_fd(game->count_move, 1);
-	ft_putchar_fd('\n', 1);
-	draw_map(game);
+	if (game->game)
+	{
+		game->count_move++;
+		ft_putstr_fd("moves : ", 1);
+		ft_putnbr_fd(game->count_move, 1);
+		ft_putchar_fd('\n', 1);
+		draw_map(game);
+	}
 }
 
 void	move_death(t_game *game, int direction)

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 14:35:54 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:53:15 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_game	*init_game(char *map_path)
 	game->c_i_direction = 0;
 	game->death_xpm_index = 0;
 	game->death_xpm_index_direction = 0;
+	game->game = 1;
 	if (!init_map(map_path, game))
 		game = NULL;
 	else

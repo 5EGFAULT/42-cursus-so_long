@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 15:52:03 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 11:39:32 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:55:35 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ void	animate_death(int frames, t_game *game)
 int	loops(t_game *game)
 {
 	static int	frames = 0;
-
-	animate_coin(frames, game);
-	animate_death(frames, game);
-	frames++;
+	if (game->game){
+		animate_coin(frames, game);
+		animate_death(frames, game);
+		frames++;
+	}
 	return (0);
 }

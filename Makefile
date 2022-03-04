@@ -4,23 +4,21 @@ OBJ := srcs/main.o srcs/init_game.o srcs/draw.o srcs/hooks.o srcs/move.o srcs/lo
 MAP := maps/map0.ber
 LIBFT = srcs/libft/libft.a
 CC:= gcc
+.PHONY: all clean fclean re
 all: $(NAME)
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx  -c $<  -o $@ 
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) -g -fsanitize=address 
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT) 
 $(LIBFT):
-		@make -C srcs/libft
-		@make -C srcs/libft clean
+	@make -C srcs/libft
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx  -c $<  -o $@
 clean:
 	@rm -f $(OBJ)
 	@make -C srcs/libft fclean
 fclean: clean
 	@rm -f $(NAME)
-	@make -C srcs/libft fclean
 re: fclean all
-
 t: $(NAME)
 	./$(NAME) $(MAP)

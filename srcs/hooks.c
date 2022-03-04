@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:12:45 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 13:28:44 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:54:44 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	hooks(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		close_game(game);
-	if (keycode == KEY_DOWN || keycode == KEY_UP)
+	if ((keycode == KEY_DOWN || keycode == KEY_UP) && game->game)
 		movehook(game, keycode);
-	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+	if ((keycode == KEY_LEFT || keycode == KEY_RIGHT) && game->game)
 		movehook(game, keycode);
-	if (game->death_exist)
+	if (game->death_exist && game->game)
 	{
 		if (keycode == KEY_ARROW_DOWN || keycode == KEY_ARROW_UP)
 			move_death_hook(game, keycode);
