@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 04:21:21 by asouinia          #+#    #+#             */
-/*   Updated: 2021/12/14 12:44:39 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:15:22 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_game	*init_game(char *map_path)
 	t_game	*game;
 
 	if (!validate_map_name(map_path))
-		return (0);
+		hundle_error(NULL,ERROR_MAP_NOT_BER_EXTENTION);
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
@@ -79,8 +79,8 @@ void	print_map(t_game *game)
 
 	i = -1;
 	while (++i < game->height)
-		printf("%s", game->map[i]);
-	printf("\n\n");
+		ft_putstr_fd(game->map[i], 1);
+	ft_putstr_fd("\n\n", 1);
 }
 
 void	set_init_death(t_game *game)

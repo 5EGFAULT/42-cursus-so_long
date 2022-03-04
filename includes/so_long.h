@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 02:46:57 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/04 11:45:15 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:23:57 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,15 @@
 #define KEY_ARROW_LEFT 123
 #define KEY_ARROW_RIGHT 124
 //? ERRORS
-#define ERROR_MAP_PATH 0 
-#define ERROR_MAP_NOT_FOUND 0 
+#define ERROR_MAP_NOT_FOUND 1 
+#define ERROR_MAP_NOT_VALID 2 
+#define ERROR_MAP_WIDTH 3
+#define ERROR_MAP_BORDER 4
+#define ERROR_MAP_PLAYER 5
+#define ERROR_MAP_EXIT 6
+#define ERROR_MAP_COINS 7
+#define ERROR_MAP_FOUND_FORBIDDEN_OBJECT 8
+#define ERROR_GAME_IS_NULL 100
 
 
 
@@ -101,7 +108,17 @@ void win_game(t_game *game);
 void lost_game(t_game *game);
 void close_game(t_game *game);
 //? errors.c
-void hundle_error(t_game *game, int error);
-
+void 	hundle_error(t_game *game, int error);
+void 	hundle_error_1(t_game *game, int error);
+//? errors2.c
+void	ERROR_MAP_NOT_FOUND();
+void	ERROR_MAP_NOT_VALID();
+void	ERROR_MAP_NOT_BER_EXTENTION();
+void	ERROR_GAME_IS_NULL();
+void	ERROR_MAP_WIDTH();
+void	ERROR_MAP_BORDER();
+void	ERROR_MAP_PLAYER();
+void	ERROR_MAP_EXIT();
+void	ERROR_MAP_FOUND_FORBIDDEN_OBJECT();
 
 #endif
