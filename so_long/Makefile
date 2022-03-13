@@ -1,6 +1,16 @@
 NAME	:= so_long
-SRC		:= srcs/main.c srcs/init_game.c srcs/draw.c srcs/hooks.c srcs/move.c srcs/loops.c srcs/endgame.c srcs/errors1.c srcs/errors2.c  srcs/validate_map_structure.c srcs/validate_map_objects.c srcs/Get_next_line/get_next_line_bonus.c srcs/Get_next_line/get_next_line_utils_bonus.c 
-OBJ		:= srcs/main.o srcs/init_game.o srcs/draw.o srcs/hooks.o srcs/move.o srcs/loops.o srcs/endgame.o srcs/errors1.o srcs/errors2.o   srcs/validate_map_structure.o srcs/validate_map_objects.o srcs/Get_next_line/get_next_line_bonus.o srcs/Get_next_line/get_next_line_utils_bonus.o 
+SRC		:=  get_next_line_utils.c	\
+			get_next_line.c			\
+			Hooks.c					\
+			Init.c					\
+			main.c					\
+			Movement.c				\
+			Render.c				\
+			ValidateMapObjects.c	\
+			ValidateMapStructure	
+SRCB	:=  Loops_bonus.c			\
+			main_bonus.c			
+OBJ		:= $(patsubst %.c, %.o, $(SRC)) 
 LIBFT	:= srcs/libft/libft.a
 CC		:= gcc
 FLAGS	:= -Wall -Wextra -Werror
