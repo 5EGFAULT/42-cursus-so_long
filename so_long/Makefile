@@ -7,27 +7,31 @@ SRC		:=  get_next_line_utils.c	\
 			Movement.c				\
 			Render.c				\
 			ValidateMapObjects.c	\
-			ValidateMapStructure	
+			ValidateMapStructure.c	\
+			Errors2.c				\
+			Errors1.c				
 SRCB	:=  Loops_bonus.c			\
 			main_bonus.c			
 OBJ		:= $(patsubst %.c, %.o, $(SRC)) 
-LIBFT	:= srcs/libft/libft.a
+OBJB	:= $(patsubst %.c, %.o, $(SRCB)) 
 CC		:= gcc
 FLAGS	:= -Wall -Wextra -Werror
+LIBFT	:= ./libft/libft.a
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) $(FLAGS) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT)
-$(LIBFT):
-	@make -C srcs/libft
+	$(CC) $(FLAGS) -lmlx -framework OpenGL -framework AppKit $(LIBFT) $(OBJ) -o $(NAME) $(LIBFT)
 %.o: %.c
 	$(CC) $(FLAGS) -c $<  -o $@
+$(LIBFT):
+	make -C ./libft
 clean:
-	@rm -f $(OBJ)
-	@make -C srcs/libft fclean
+	rm -f $(OBJ) $(OBJB)
+	make -C ./libft fclean
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 re: fclean all
-bonus: $(NAME)
+bonus: $(LIBFT) $(OBJB)
+	$(CC) $(FLAGS) -lmlx -framework OpenGL -framework AppKit $(LIBFT) $(OBJB) -o $(NAME) $(LIBFT)
