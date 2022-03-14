@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:19 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:58:04 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:14:48 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ t_game	*init_game(char *map_path)
 	if (!game)
 		catch_error_game_is_null();
 	game->count_move = 0;
+	game->c_i = 0;
+	game->c_i_direction = 0;
+	game->death_xpm_index = 0;
+	game->death_xpm_index_direction = 0;
 	game->game = 1;
 	if (!init_map(map_path, game))
 		game = NULL;
+	else
+		set_init_death(game);
 	return (game);
 }
 
@@ -85,4 +91,29 @@ int	count_height(int fd)
 		i++;
 	}
 	return (i);
+}
+
+void	set_init_death(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = -1;
+	game->death_exist = 0;
+	while (++i < game->height - 1)
+	{
+		if (game->death_exist)
+			break ;
+		while (++j < game->width - 1)
+		{
+			if (game->map[i][j] == '0')
+			{
+				game->death_exist = 1;
+				game->d_x = j;
+				game->d_y = i;
+				break ;
+			}
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:15 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:58:06 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:24:25 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ int	movehook(t_game *game, int keycode)
 	if (!can_move(game, keycode))
 		return (0);
 	move_player(game);
+	return (1);
+}
+
+int	move_death_hook(t_game *game, int keycode)
+{
+	if (!can_move_death(game, keycode))
+		return (0);
+	move_death(game, keycode);
 	return (1);
 }
 

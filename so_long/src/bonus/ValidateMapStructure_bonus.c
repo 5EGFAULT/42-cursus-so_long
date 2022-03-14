@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:38 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:57:10 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:36:09 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	validate_map_name(char *map_file)
 	if (!map_file)
 		return (0);
 	s = ft_strrchr(map_file, '.');
+	if (!s)
+		return (0);
 	if (ft_strlen(map_file) < 5)
 		return (0);
 	if (ft_strncmp(s, ".ber", 4))

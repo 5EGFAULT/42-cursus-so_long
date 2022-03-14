@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:24 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:57:51 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:08:48 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	draw_map(game);
 	mlx_hook(game->mlx_win, 2, 1L << 0, hooks, game);
 	mlx_hook(game->mlx_win, 17, 1L << 0, destroy_hook, game);
+	mlx_loop_hook(game->mlx, loops, game);
 	mlx_loop(game->mlx);
 	free(game->mlx_win);
 	free(game->mlx);

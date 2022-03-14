@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:28:35 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:57:29 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:27:21 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,23 @@
 //! 	 XPM PATHS
 # define PLAYER_BLOCK "xpm/p.xpm"
 # define WALL_BLOCK "xpm/1.xpm"
-# define COIN_BLOCK "xpm/c-4.xpm"
+# define COIN_BLOCK "xpm/c-"
 # define BG_BLOCK "xpm/0.xpm"
 # define EXIT_OPEN_BLOCK "xpm/e_o.xpm"
 # define EXIT_CLOSE_BLOCK "xpm/e_c.xpm"
+# define DEATH_BLOCK "xpm/d-"
 //! 	 EVENT KEYS CODES
 # define KEY_UP 13
 # define KEY_DOWN 1
 # define KEY_LEFT 0
 # define KEY_RIGHT 2
 # define KEY_ESC 53
+
+# define KEY_ARROW_UP 126
+# define KEY_ARROW_DOWN 125
+# define KEY_ARROW_LEFT 123
+# define KEY_ARROW_RIGHT 124
+
 //!		 ERRORS
 # define ERROR_MAP_NOT_FOUND 1 
 # define ERROR_MAP_NOT_VALID 2 
@@ -48,6 +55,13 @@ typedef struct s_game
 {
 	char	**map;
 	int		game;
+	int		c_i;
+	int		c_i_direction;
+	int		death_xpm_index;
+	int		death_xpm_index_direction;
+	int		death_exist;
+	int		d_x;
+	int		d_y;
 	int		count_move;
 	int		height;
 	int		width;
@@ -83,17 +97,26 @@ void	catch_error_map_width(void);
 int		movehook(t_game *game, int keycode);
 int		hooks(int keycode, t_game *game);
 int		destroy_hook(t_game *game);
+int		move_death_hook(t_game *game, int keycode);
 //!		Init.c
 int		init_map(char *map_path, t_game *game);
 t_game	*init_game(char *map_path);
 int		free_game(t_game **game);
 int		count_height(int fd);
+void	set_init_death(t_game *game);
 //!		Movement.c
 int		can_move(t_game *game, int direction);
 void	move_player(t_game *game);
+void	move_death(t_game *game, int direction);
+int		can_move_death(t_game *game, int direction);
 //!		Render.c
 void	draw_img_block(t_game *game, char c, int x, int y);
 void	draw_map(t_game *game);
+void	draw_death_block(t_game *game);
 void	close_game(t_game *game);
-
+//!		Loops.c
+void	animate_coin(int frames, t_game *game);
+void	animate_death(int frames, t_game *game);
+int		loops(t_game *game);
+int		create_trgb(int t, int r, int g, int b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:27 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 17:57:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:11:13 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,48 @@ void	move_player(t_game *game)
 		ft_putchar_fd('\n', 1);
 		draw_map(game);
 	}
+}
+
+void	move_death(t_game *game, int direction)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (direction == KEY_ARROW_UP)
+		i = -1;
+	if (direction == KEY_ARROW_DOWN)
+		i = 1;
+	if (direction == KEY_ARROW_LEFT)
+		j = -1;
+	if (direction == KEY_ARROW_RIGHT)
+		j = 1;
+	game->map[game->d_y][game->d_x] = '0';
+	game->d_y += i;
+	game->d_x += j;
+}
+
+int	can_move_death(t_game *game, int direction)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (direction == KEY_ARROW_UP)
+		i = -1;
+	if (direction == KEY_ARROW_DOWN)
+		i = 1;
+	if (direction == KEY_ARROW_LEFT)
+		j = -1;
+	if (direction == KEY_ARROW_RIGHT)
+		j = 1;
+	if (game->map[game->d_y + i][game->d_x + j] == '1')
+		return (0);
+	if (game->map[game->d_y + i][game->d_x + j] == 'C')
+		return (0);
+	if (game->map[game->d_y + i][game->d_x + j] == 'E')
+		return (0);
+	return (1);
 }
