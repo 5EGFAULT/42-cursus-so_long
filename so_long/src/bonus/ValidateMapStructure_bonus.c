@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ValidateMapStructure.c                             :+:      :+:    :+:   */
+/*   ValidateMapStructure_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:42:38 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 21:22:09 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:57:10 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./so_long_bonus.h"
 
 int	validate_map_name(char *map_file)
 {

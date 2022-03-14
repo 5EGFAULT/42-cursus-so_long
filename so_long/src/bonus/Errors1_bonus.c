@@ -6,11 +6,11 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:58:28 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 20:53:30 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:54:32 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./so_long_bonus.h"
 
 void	catch_error_map_not_found(void)
 {

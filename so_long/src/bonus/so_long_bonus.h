@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 19:28:35 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 21:24:08 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:57:29 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "./get_next_line.h"
-# include "./libft/libft.h"
+# include "./get_next_line_bonus.h"
+# include "../libft/libft.h"
 # define BLOCK_SIZE 50
 # define BUFFER_SIZE 1
 //! 	 XPM PATHS

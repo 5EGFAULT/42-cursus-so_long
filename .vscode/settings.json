@@ -22,6 +22,7 @@
 	"mlx.h": "c",
 	"stdio.h": "c",
 	"fcntl.h": "c",
-	"get_next_line.h": "c"
+	"get_next_line.h": "c",
+	"so_long_bonus.h": "c"
 }
 }

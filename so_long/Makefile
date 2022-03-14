@@ -1,17 +1,6 @@
 NAME	:= so_long
-SRC		:=  ./src/SrcMandatory/get_next_line_utils.c	\
-			./src/SrcMandatory/get_next_line.c			\
-			./src/SrcMandatory/Hooks.c					\
-			./src/SrcMandatory/Init.c					\
-			./src/SrcMandatory/main.c					\
-			./src/SrcMandatory/Movement.c				\
-			./src/SrcMandatory/Render.c					\
-			./src/SrcMandatory/ValidateMapObjects.c		\
-			./src/SrcMandatory/ValidateMapStructure.c	\
-			./src/SrcMandatory/Errors2.c				\
-			./src/SrcMndatory/Errors1.c
-SRCB	:=  Loops_bonus.c			\
-			main_bonus.c			
+SRC		:=  ./src/mandatory/get_next_line_utils.c	./src/mandatory/get_next_line.c	./src/mandatory/Hooks.c	./src/mandatory/Init.c	./src/mandatory/main.c	./src/mandatory/Movement.c	./src/mandatory/Render.c	./src/mandatory/ValidateMapObjects.c	./src/mandatory/ValidateMapStructure.c	./src/mandatory/Errors2.c	./src/mandatory/Errors1.c
+SRCB	:=  ./src/bonus/Loops_bonus.c ./src/bonus/get_next_line_utils_bonus.c	./src/bonus/get_next_line_bonus.c	./src/bonus/Hooks_bonus.c	./src/bonus/Init_bonus.c	./src/bonus/main_bonus.c	./src/bonus/Movement_bonus.c	./src/bonus/Render_bonus.c	./src/bonus/ValidateMapObjects_bonus.c	./src/bonus/ValidateMapStructure_bonus.c	./src/bonus/Errors2_bonus.c	./src/bonus/Errors1_bonus.c
 OBJ		:= $(patsubst %.c, %.o, $(SRC)) 
 OBJB	:= $(patsubst %.c, %.o, $(SRCB)) 
 CC		:= gcc

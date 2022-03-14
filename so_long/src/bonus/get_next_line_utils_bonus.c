@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:45:20 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 19:40:40 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:00:30 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_strjoinsmallpart(int *j, char *s, char *s1)
 {
